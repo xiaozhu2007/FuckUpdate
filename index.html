@@ -4,18 +4,31 @@
 <title>Update Screen</title>
 <script src="jquery.js"></script>
 <script type="text/javascript"> 
+var message = "Sorry, right-click has been disabled";
+function clickIE() {
+    if (document.all) {
+        (message);
+        return false;
+    }
+}
 
-var message="Sorry, right-click has been disabled"; 
-function clickIE() {if (document.all) {(message);return false;}} 
-function clickNS(e) {if 
-(document.layers||(document.getElementById&&!document.all)) { 
-if (e.which==2||e.which==3) {(message);return false;}}} 
-if (document.layers) 
-{document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;} 
-else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;} 
-document.oncontextmenu=new Function("return false") 
-</script>
-<script>
+function clickNS(e) {
+    if (document.layers || (document.getElementById && !document.all)) {
+        if (e.which == 2 || e.which == 3) {
+            (message);
+            return false;
+        }
+    }
+}
+if (document.layers) {
+    document.captureEvents(Event.MOUSEDOWN);
+    document.onmousedown = clickNS;
+} else {
+    document.onmouseup = clickNS;
+    document.oncontextmenu = clickIE;
+}
+document.oncontextmenu = new Function("return false")
+
 $(function() {
   $(document).keyup(function(e) {
     switch(e.keyCode) {
@@ -24,13 +37,12 @@ $(function() {
     }
   });
 });
-</script>
-<script>  
+
 var count=0;
 var stage=1;
 var stage2=3;
 var counter=setInterval(timer, 14830); // 14.83秒+1%
-var ref="Configuring updates";
+var ref="正在配置更新";
 
 function timer()
 {
