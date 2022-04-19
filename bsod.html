@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>BSOD</title>
+<style>
+body { cursor:none;font-family:"Segoe UI Light", "Segoe UI", Arial; font-weight: lighter;}
+.content {width:700px; margin:10% auto;user-select:none;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none; }
+</style>
+<SCRIPT TYPE="text/javascript"> 
+var message="抱歉，右键单击已被禁用"; 
+function clickIE() {if (document.all) {(message);return false;}} 
+function clickNS(e) {if 
+(document.layers||(document.getElementById&&!document.all)) { 
+if (e.which==2||e.which==3) {(message);return false;}}} 
+if (document.layers) 
+{document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS;} 
+else{document.onmouseup=clickNS;document.oncontextmenu=clickIE;} 
+document.oncontextmenu=new Function("return false") 
+// --> 
+</SCRIPT>
+
+</head>
+<body bgcolor="#0086ac" scroll="no">
+<div class="content">
+
+<font size="4" color="#FFFFFF"><!-- 纯白色 -->
+<p style="font-size:100pt; margin:0; padding-bottom:20pt">:(</p>
+<p style="font-size:20pt; margin:0; padding:0">你的电脑出现问题，需要重新启动。我们收集一些错误信息，然后我们将为您重新启动</p>
+<br>手动重新启动电脑<br><br>
+<img src="qr.png" style="float:left;" />
+<div style="float:left;margin-left:30px;width:65%;">
+<p style="font-size:14pt; color:#fff; margin-top:-30px; padding:0;line-height:32px;"><br />有关此问题和可能的修复方法的详细信息，请访问<br>http://windows.com/stopcode<br><br>如果您致电支持人员，请向他们提供以下信息：<br>停止代码：SYS_EXCEPTION_PONIES_NOT_HANDLED</p>
+</div>
+</div>
+</font>
+</body>
+</html>
