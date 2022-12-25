@@ -21,6 +21,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: prettier --write .
+        uses: actionsx/prettier@v2
+        with:
+          args: --write .
+      - name: prettier --check .
+        uses: actionsx/prettier@v2
+        with:
+          args: --check .
+      - name: Git push
+        run: |
+          git pull origin master # 考虑延时
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name "${GITHUB_ACTOR}"
+          git add .
+          git commit -m "[skip ci]:star: Prettier OK"
+          git push origin master
   # Single deploy job since we're just deploying
   deploy:
     environment:
